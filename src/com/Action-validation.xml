@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE validators PUBLIC   
+        "-//OpenSymphony Group//XWork Validator 1.0.2//EN"   
+        "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">  
+<validators>
+<field name="password">
+<field-validator type="requiredstring" short-circuit="true"> <!-- Here the short-circuit= true skips the next validation (i.e; in this case password validation) if the current validation fails, there by printing only one message. Here checkig for another validation while the first one fails is useless , so we use this thing.  -->
+<message key="error.required"></message>
+</field-validator>
+<field-validator type="custompasswordvalidation">
+<param name="specialChars">$!@#?</param>
+<message>Your password must contain one letter, one number, and one
+of the following "${specialChars}".
+</message>
+</field-validator>
+</field>
+<field name="age">
+
+<field-validator type="int">
+<param name ="min">18</param>
+<param name ="max">98</param>
+<message key="error.range"></message>
+</field-validator>
+</field>
+<!--  the above validator is a of type field validator, where u can apply many validations to a certain feild 
+the below validator type is a non feild validator where only one validation can be applied to field at time. -->
+ <validator type="requiredstring">  
+        <param name="fieldName">name</param>  
+       <!--  <param name="feildName">firstName</param>  multiple params are not woring-->
+        <param name="trim">true</param>  
+        <message key ="error.required"></message>  
+    </validator>  
+</validators>
