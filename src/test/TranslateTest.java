@@ -20,7 +20,7 @@ public class TranslateTest {
 		InputStream sound = audio.getAudio("I am a bus", Language.ENGLISH); 
 		audio.play(sound);
 
-
+System.out.println("hi");
 	}
 
 }
